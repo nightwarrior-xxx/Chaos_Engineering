@@ -16,7 +16,7 @@ E: Could not open lock file /var/lib/dpkg/lock - open (2: No such file or direct
 
 
 
-<pre>ls -l /var/lib/dpkg/</pre>
+##ls -l /var/lib/dpkg/
 total 9964
 drwxr-xr-x 2 root root    4096 nov 28 11:18 alternatives
 -rw-r--r-- 1 root root      11 sep 18 14:08 arch
@@ -36,24 +36,24 @@ drwxr-xr-x 2 root root    4096 nov 28 11:18 updates
 
 You removed 5 directories, the status file, etc. So, lets try to fix the stuff. First, create the directory:
 
-<pre>sudo mkdir -p /var/lib/dpkg/{alternatives,info,parts,triggers,updates}</pre>
+##sudo mkdir -p /var/lib/dpkg/{alternatives,info,parts,triggers,updates}
 
 Recover some backups:
 
-<pre>sudo cp /var/backups/dpkg.status.0 /var/lib/dpkg/status</pre>
+##sudo cp /var/backups/dpkg.status.0 /var/lib/dpkg/status
 
 Now, let's see if your dpkg is working (start praying):
 
-<pre>apt-get download dpkg</pre>
-<pre>sudo dpkg -i dpkg*.deb</pre>
+##apt-get download dpkg
+##sudo dpkg -i dpkg*.deb
 
 If everything is "ok" then repair your base files too:
 
-<pre>apt-get download base-files</pre>
-<pre>sudo dpkg -i base-files*.deb</pre>
+##apt-get download base-files
+##sudo dpkg -i base-files*.deb
 
 Now try to update your package list, etc.:
 
-<pre>dpkg --audit</pre>
-<pre>sudo apt-get update</pre>
-<pre>sudo apt-get check</pre>
+##dpkg --audit
+##sudo apt-get update
+##sudo apt-get check
